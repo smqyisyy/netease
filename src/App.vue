@@ -1,30 +1,41 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
+  <!-- 登录页面不需要显示底部组件 -->
+  <footerMusic v-if="$store.state.isFooterShow"></footerMusic>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import footerMusic from './components/item/FooterMusic.vue';
+
+export default{
+  components:{footerMusic}
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+</script>
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// 最大组件设置100%否则子组件的宽高100%不生效
+body,html,#app{
+  // height: 100%;
+  width: 100%;
+}
+// 整个页面黑白滤镜
+// html{
+//   -webkit-filter: grayscale(100%);
+//   -moz-filter: grayscale(100%);
+//   -ms-filter: grayscale(100%);
+//   -o-filter: grayscale(100%);
+//   filter: grayscale(100%);
+//   filter: gray;
+//  }
+.icon {
+  width: .5rem;
+  height: .5rem;
+}
+a{
+  color: black;
 }
 </style>
